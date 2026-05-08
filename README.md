@@ -1,63 +1,89 @@
-**LLMNR Poisoning Lab Simulation**
+LLMNR Poisoning Lab Simulation
 
-Educational LLMNR Poisoning lab simulation conducted in an isolated environment, with attached logs and analysis to demonstrate credential capture, attack flow, and SOC detection techniques.
+ ⚠️ Disclaimer
+This project is created strictly for educational purposes in an isolated lab environment.
 
 
-**Lab Environment Setup:**   The attack is performed in an isolated lab with the following machines
+📌 Overview
+This project demonstrates an LLMNR Poisoning attack performed in a controlled and isolated lab environment. It showcases how attackers capture credentials and use them for further exploitation.
+
+
+🧪 Lab Environment
 
 Attacker Machine: Kali Linux
 Victim Machine: Windows 10
-Domain Controller (optional): Windows Server
+Domain Controller (Optional): Windows Server
 
 
-**Tools Used**
+🛠️ Tools Used
 
-Responder → Captures hashes via LLMNR/NBT-NS poisoning
-Wireshark → Packet capture and traffic analysis
+Responder → LLMNR/NBT-NS poisoning & hash capture
+Wireshark → Network traffic analysis
 Hashcat → Password cracking
 PsExec → Lateral movement
 
 
-LLMNR is a protocol used by Windows systems to resolve hostnames when DNS fails.
+📡 What is LLMNR?
+LLMNR (Link-Local Multicast Name Resolution) is used by Windows systems to resolve hostnames when DNS fails.
 
-**Attack Concept:**
+⚡ Attack Concept
 
-Victim tries to access a non-existing share (e.g., \\fileserver)
-DNS fails → system sends LLMNR broadcast
-Attacker responds pretending to be the server
-Victim sends NTLM hash → attacker captures it
+Victim tries to access a non-existent share (e.g., \\fileserver)
+DNS fails → system sends LLMNR request
+Attacker responds as the fake server
+Victim sends NTLM hash
+Attacker captures the hash
 
 
-**Attack Flow -**
-
+🚀 Attack Flow
 1️⃣ Reconnaissance
+
 Monitor network traffic
+Identify active hosts
 
 2️⃣ Initial Access (LLMNR Poisoning)
+
 Run Responder on attacker machine
 Listen for LLMNR/NBT-NS requests
 Poison responses to impersonate server
 
 3️⃣ Credential Capture
+
 Victim attempts authentication
-NTLMv2 hash is captured by Responder
+NTLMv2 hash is captured
 
 4️⃣ Hash Cracking
-Use tools like Hashcat
-Convert captured hash into plaintext password
+
+Use Hashcat
+Convert hash → plaintext password
 
 5️⃣ Valid Credentials
-Extract: Username, Domain, Password
+
+Extract:
+
+Username
+Domain
+Password
+
+
 
 6️⃣ Lateral Movement
-Use cracked credentials to access victim system
-Tools:PsExec
+
+Access victim system using credentials
+Tool used: PsExec
 
 7️⃣ Execution
-Execute commands on victim machine
-Gain SYSTEM-level access
+
+Execute commands on target machine
+Gain elevated/system-level access
 
 8️⃣ Persistence
-Create new accounts or scheduled tasks to maintain access for future sessions
+
+Create new accounts or scheduled tasks
+Maintain long-term access
+
+
+📊 Logs & Analysis
+All logs attached in this repository are Captured from the lab environment.
 
 
