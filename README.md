@@ -3,7 +3,7 @@
 Educational LLMNR Poisoning lab simulation conducted in an isolated environment, with attached logs and analysis to demonstrate credential capture, attack flow, and SOC detection techniques.
 
 
-**Lab Environment Setup:** The attack is performed in an isolated lab with the following machines
+**Lab Environment Setup:**   The attack is performed in an isolated lab with the following machines
 
 Attacker Machine: Kali Linux
 Victim Machine: Windows 10
@@ -11,6 +11,7 @@ Domain Controller (optional): Windows Server
 
 
 **Tools Used**
+
 Responder → Captures hashes via LLMNR/NBT-NS poisoning
 Wireshark → Packet capture and traffic analysis
 Hashcat → Password cracking
@@ -20,6 +21,7 @@ PsExec → Lateral movement
 LLMNR is a protocol used by Windows systems to resolve hostnames when DNS fails.
 
 **Attack Concept:**
+
 Victim tries to access a non-existing share (e.g., \\fileserver)
 DNS fails → system sends LLMNR broadcast
 Attacker responds pretending to be the server
@@ -27,6 +29,7 @@ Victim sends NTLM hash → attacker captures it
 
 
 **Attack Flow -**
+
 1️⃣ Reconnaissance
 Monitor network traffic
 
