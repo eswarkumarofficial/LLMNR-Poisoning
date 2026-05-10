@@ -2,12 +2,6 @@
 
 ## 📌 Overview
 This project demonstrates an **LLMNR Poisoning attack** performed in a **controlled and isolated lab environment**.  
-It showcases how attackers capture credentials and use them for further exploitation.
-
----
-
-## ⚠️ Disclaimer
-This project is created strictly for **educational purposes** in an **isolated lab environment**.  
 
 ---
 
@@ -19,8 +13,7 @@ This project is created strictly for **educational purposes** in an **isolated l
 ---
 
 ## 🛠️ Tools Used
-- **Responder** → LLMNR/NBT-NS poisoning & hash capture  
-- **Wireshark** → Network traffic analysis  
+- **Responder** → LLMNR/NBT-NS poisoning & hash capture   
 - **Hashcat** → Password cracking  
 - **PsExec** → Lateral movement  
 
@@ -28,16 +21,6 @@ This project is created strictly for **educational purposes** in an **isolated l
 
 ## 📡 What is LLMNR?
 LLMNR (Link-Local Multicast Name Resolution) is used by Windows systems to resolve hostnames when DNS fails.
-
----
-
-## ⚡ Attack Concept
-1. Victim tries to access a non-existent share (e.g., `\\fileserver`)  
-2. DNS fails → system sends LLMNR request  
-3. Attacker responds as a fake server  
-4. Victim sends NTLM hash  
-5. Attacker captures the hash and crack
-6. Now attacker uses captured credentials for further exploitation
 
 ---
 
